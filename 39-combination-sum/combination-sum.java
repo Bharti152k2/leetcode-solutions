@@ -16,24 +16,28 @@ class Solution {
             return;
         }
 
-        if (index == candidates.length || target < 0) {
+        if (index == candidates.length) {
             return;
         }
 
-        // Take
-        combination.add(candidates[index]);
-        addCombination(
-            candidates,
-            index,
-            target - candidates[index],
-            combination,
-            res
-        );
+        // TAKE
+        if (candidates[index] <= target) {
+            combination.add(candidates[index]);
 
-        // Backtrack
-        combination.remove(combination.size() - 1);
+            // index stays same because we can reuse the candidate
+            addCombination(
+                candidates,
+                index,
+                target - candidates[index],
+                combination,
+                res
+            );
 
-        // Don't take
+            // BACKTRACK
+            combination.remove(combination.size() - 1);
+        }
+
+        // DON'T TAKE
         addCombination(
             candidates,
             index + 1,
