@@ -7,14 +7,17 @@ class Solution {
             if(board[i][col]==num){
                 return false;
             }
-        }
-        for(int i=0;i<board.length;i++){
             if(board[row][i]==num){
                 return false;
             }
         }
+        // for(int i=0;i<board.length;i++){
+
+        // }
         int x=(row/3)*3;
         int y=(col/3)*3;
+        // int x=row;
+        // int y=col;
         for(int i=x;i<x+3;i++){
             for(int j=y;j<y+3;j++){
                 if(board[i][j]==num){
