@@ -20,17 +20,12 @@ class Solution {
         }
         int sum=0;
         if(root.val>=low && root.val<=high){
-            sum=sum+root.val;
-            if(root.left!=null){
-                sum=sum+rangeSumBST(root.left,low,high);
-            }
-            if(root.right!=null){
-                sum=sum+rangeSumBST(root.right,low,high);
-            }  
-        }else if(root.val>low && root.val>high){
-            sum=sum+rangeSumBST(root.left,low,high);
-        }else if(root.val<low && root.val<high){
-            sum=sum+rangeSumBST(root.right,low,high);
+            return root.val+ rangeSumBST(root.left,low,high)+rangeSumBST(root.right,low,high);
+        }
+        if(root.val>low){
+            return rangeSumBST(root.left,low,high);
+        }else if(root.val<low){
+            return rangeSumBST(root.right,low,high);
         }
         return sum;
     }
